@@ -1,4 +1,6 @@
+"use client"
 import Image from "next/image"
+import { signIn } from "next-auth/react"
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
         className="bg-gray-900 p-4"
       />
       <button
-        // onClick={() => signIn("google")}
+        onClick={() => signIn("google")}
         className="text-black bg-white p-6 rounded font-bold text-2xl animate-pulse"
       >
         Click here to login with Google
