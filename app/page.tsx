@@ -1,10 +1,14 @@
 "use client"
 import Image from "next/image"
 import { signIn } from "next-auth/react"
+import { useModal } from "@/hooks/useModal"
+import Modal from "@/components/Modal"
 
 export default function Home() {
+  const { isModalOpen, setIsModalOpen } = useModal()
+
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 justify-center space-y-12">
+    <main className="flex min-h-screen flex-col items-center p-24 justify-center space-y-12 bg-slate-800">
       <Image
         src="/next.svg"
         width={200}
@@ -18,6 +22,21 @@ export default function Home() {
       >
         Click here to login with Google
       </button>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="text-black bg-white p-6 rounded font-bold text-2xl animate-pulse"
+      >
+        Click here to login with Email
+      </button>
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <div className="flex flex-col space-y-4">
+            <input placeholder="Email" />
+            <input placeholder="Password" />
+            <button className="bg-[#128]">Login</button>
+          </div>
+        </Modal>
+      )}
     </main>
   )
 }

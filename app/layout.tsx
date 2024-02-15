@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../pages/api/auth/[...nextauth]"
 import { SessionProvider } from "../components/SessionProvider"
 import LoggedInPage from "@/components/LoggedInPage"
+import { ModalProvider } from "@/hooks/useModal"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,9 +25,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <SessionProvider session={session}>
-          {!session ? <div>{children}</div> : <LoggedInPage />}
-        </SessionProvider>
+        <ModalProvider>
+          <SessionProvider session={session}>
+            {!session ? <div>{children}</div> : <LoggedInPage />}
+          </SessionProvider>
+        </ModalProvider>
       </body>
     </html>
   )
