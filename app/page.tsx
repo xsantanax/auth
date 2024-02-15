@@ -3,6 +3,7 @@ import Image from "next/image"
 import { signIn } from "next-auth/react"
 import { useModal } from "@/hooks/useModal"
 import Modal from "@/components/Modal"
+import AuthModalContent from "@/components/AuthModalContent"
 
 export default function Home() {
   const { isModalOpen, setIsModalOpen } = useModal()
@@ -30,11 +31,7 @@ export default function Home() {
       </button>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          <div className="flex flex-col space-y-4">
-            <input placeholder="Email" />
-            <input placeholder="Password" />
-            <button className="bg-[#128]">Login</button>
-          </div>
+          <AuthModalContent />
         </Modal>
       )}
     </main>
