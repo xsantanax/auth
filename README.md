@@ -1,3 +1,12 @@
+## Next Auth
+
+To get environment variables GOOGLE_ID and GOOGLE_SECRET go to
+Google Console -> APIs & Services -> Credentials
+
+NEXTAUTH_SECRET is used for hashing and can have any value (ex: random123)
+
+## Next Info
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
